@@ -21,12 +21,12 @@ class EarthMoonVR extends React.Component {
     };
     this.lastUpdate = Date.now();
     this.spaceSkymap = [
-      '../static_assets/space_right.png',
-      '../static_assets/space_left.png',
-      '../static_assets/space_up.png',
-      '../static_assets/space_down.png',
-      '../static_assets/space_back.png',
-      '../static_assets/space_front.png'
+      '../static_assets/skybox/space_right.png',
+      '../static_assets/skybox/space_left.png',
+      '../static_assets/skybox/space_up.png',
+      '../static_assets/skybox/space_down.png',
+      '../static_assets/skybox/space_back.png',
+      '../static_assets/skybox/space_front.png'
     ];
     this.styles = StyleSheet.create({
       menu: {
@@ -104,8 +104,8 @@ class EarthMoonVR extends React.Component {
             }
           ]
         }} source={{
-          obj: asset('mars.obj'),
-          mtl: asset('mars.mtl')
+          obj: asset('mars/mars.obj'),
+          mtl: asset('mars/mars.mtl')
         }} lit={true}>
           <Sound source={{
             ogg: asset('music/Mars.ogg'),
@@ -127,12 +127,28 @@ class EarthMoonVR extends React.Component {
             }
           ]
         }} source={{
-          obj: asset('deimos.obj'),
-          mtl: asset('deimos.mtl')
+          obj: asset('mars/deimos.obj'),
+          mtl: asset('mars/deimos.mtl')
+        }} lit={true}/>
+        <Model style={{
+          transform: [
+            {
+              translate: [
+                -80, 5, this.state.zoom - 10
+              ]
+            }, {
+              scale: 0.042
+            }, {
+              rotateY: this.state.rotation / 3
+            }
+          ]
+        }} source={{
+          obj: asset('mars/phobos.obj'),
+          mtl: asset('mars/phobos.mtl')
         }} lit={true}/>
       </View>
     );
   }
 };
 
-AppRegistry.registerComponent('EarthMoonVR', () => EarthMoonVR);
+AppRegistry.registerComponent('ThePlanets', () => EarthMoonVR);
