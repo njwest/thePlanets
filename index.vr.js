@@ -8,7 +8,8 @@ import {
   View,
   Model,
   AmbientLight,
-  Sound
+  Sound,
+  Scene
 } from 'react-vr';
 import Button from './components/button.js';
 
@@ -73,7 +74,7 @@ class EarthMoonVR extends React.Component {
 
   render() {
     return (
-      <View>
+      <Scene>
         <Pano source={{
           uri: this.spaceSkymap
         }}/>
@@ -146,7 +147,7 @@ class EarthMoonVR extends React.Component {
           obj: asset('mars/phobos.obj'),
           mtl: asset('mars/phobos.mtl')
         }} lit={true}/>
-      </View>
+      </Scene>
     );
   }
 };
